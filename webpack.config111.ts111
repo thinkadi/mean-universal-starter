@@ -1,14 +1,28 @@
 const path = require('path');
 const webpackMerge = require('webpack-merge');
+const ngtools = require('@ngtools/webpack');
 
 const commonConfig: any = {
   resolve: {
-    extensions: ['.ts']
+    extensions: ['.ts', '.js']
   },
   context: __dirname,
   output: {
     publicPath: '',
     filename: '[name].bundle.js'
+  },
+  plugins: [
+    new ngtools.AotPlugin({
+      tsConfigPath: './tsconfig.json',
+    })
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        loader: '@ngtools/webpack',
+      }
+    ]
   }
 };
 
@@ -21,6 +35,7 @@ const clientConfig: any = {
 };
 
 const serverConfig: any = {
+  target: 'node',
   entry: './src/server',
   output: {
     filename: 'index.js',
