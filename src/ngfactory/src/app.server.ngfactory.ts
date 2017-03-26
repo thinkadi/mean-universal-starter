@@ -174,7 +174,7 @@ class AppServerModuleInjector extends import0.ɵNgModuleInjector<import1.AppServ
     this._HttpModule_0 = new import2.HttpModule();
     this._CommonModule_1 = new import3.CommonModule();
     this._ErrorHandler_2 = import4.ɵa();
-    this._APP_ID_3 = 'universal-demo-app';
+    this._APP_ID_3 = 'mean-universal-starter';
     this._ɵTRANSITION_ID_4 = this._APP_ID_3;
     this._APP_INITIALIZER_5 = [
       import0.ɵo,

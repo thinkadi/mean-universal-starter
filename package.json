@@ -4,7 +4,10 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:aot": "ngc"
+    "build:aot": "ngc",
+    "build": "webpack",
+    "serve": "node dist/server/index",
+    "start": "npm run build:aot && npm run build && npm run serve"
   },
   "repository": {
     "type": "git",
