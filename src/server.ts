@@ -19,7 +19,7 @@ app.set('views', 'src');
 
 app.use(express.static(path.join(path.resolve(__dirname), '..', 'dist', 'client'), { index: false }));
 
-app.get('/', (req, res) => {
+app.get(['/', '/home', '/about'], (req, res) => {
     res.render('index', { req });
 });
 

@@ -19,8 +19,11 @@ const commonConfig: any = {
   module: {
     rules: [
       {
-        test: /\.ts$/,
-        loader: '@ngtools/webpack',
+        "test": /\.ts$/,
+        "loader": '@ngtools/webpack',
+      }, {
+        "test": /\.html$/,
+        "loader": "raw-loader"
       }
     ]
   }
