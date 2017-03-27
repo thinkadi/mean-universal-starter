@@ -28,18 +28,24 @@ const commonConfig: any = {
 
 const clientConfig: any = {
   target: 'web',
-  entry: './src/client',
+  entry: './src/browser.ts',
   output: {
     path: path.resolve(__dirname, 'dist/client')
   }
 };
 
 const serverConfig: any = {
+  entry: {
+    main: './src/server.ts'
+  },
+  node: {
+    __filename: true,
+    __dirname: true
+  },
   target: 'node',
-  entry: './src/server',
   output: {
-    filename: 'index.js',
-    path: path.resolve(__dirname, 'dist/server')
+    path: path.resolve(__dirname, 'dist/server'),
+    filename: 'index.js'
   }
 };
 
