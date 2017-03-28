@@ -19,6 +19,12 @@ app.set('views', 'src');
 
 app.use(express.static(path.join(path.resolve(__dirname), '..', 'dist', 'client'), { index: false }));
 
+app.get('/unitesty', function (req: any, res: any) {
+    res.send({
+        "result": "unitesty success"
+    });
+});
+
 app.get(['/', '/home', '/about'], (req, res) => {
     res.render('index', { req });
 });

@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
+import { UnityService } from './services/unity.service';
 
 @NgModule({
     imports: [
-        AppRoutingModule
+        AppRoutingModule,
+        HttpModule
     ],
     declarations: [
         AppComponent,
@@ -14,6 +18,7 @@ import { AboutComponent } from './components/about/about.component';
         AboutComponent
     ],
     providers: [
+        UnityService
     ],
     bootstrap: [
         AppComponent
