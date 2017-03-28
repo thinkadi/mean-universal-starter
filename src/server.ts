@@ -1,34 +1,39 @@
 import 'zone.js/dist/zone-node';
 import * as path from 'path';
+import { enableProdMode } from '@angular/core';
 import { platformServer, renderModuleFactory } from '@angular/platform-server';
 import * as express from 'express';
 
 import { AppServerModuleNgFactory } from './ngfactory/src/app.server.ngfactory';
-
+import { environment } from './environments/environment';
 import { ngExpressEngine } from './express-engine';
 
-const app = express();
+if (environment.production) {
+    // Angular Production Mode
+    enableProdMode();
+}
 
-app.engine('html', ngExpressEngine({
-    baseUrl: 'http://localhost:3000',
+const server = express();
+
+server.engine('html', ngExpressEngine({
     bootstrap: [AppServerModuleNgFactory]
 }));
 
-app.set('view engine', 'html');
-app.set('views', 'src');
+server.set('view engine', 'html');
+server.set('views', 'src');
 
-app.use(express.static(path.join(path.resolve(__dirname), '..', 'dist', 'client'), { index: false }));
+server.use(express.static(path.join(path.resolve(__dirname), '..', 'dist', 'client'), { index: false }));
 
-app.get('/unitesty', function (req: any, res: any) {
+server.get('/unitesty', function (req: any, res: any) {
     res.send({
         "result": "unitesty success"
     });
 });
 
-app.get(['/', '/home', '/about'], (req, res) => {
+server.get(['/', '/home', '/about'], (req, res) => {
     res.render('index', { req });
 });
 
-app.listen(3000, () => {
+server.listen(3000, () => {
     console.log('listening...')
 });
