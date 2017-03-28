@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppModule } from './app/app.module';
 import { AppComponent } from './app/app.component';
 
+import { environment } from './environments/environment';
+
 @NgModule({
     imports: [
         ServerModule,
         BrowserModule.withServerTransition({
-            appId: 'mean-universal-starter'
+            appId: environment.appId
         }),
         AppModule
     ],

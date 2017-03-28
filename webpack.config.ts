@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 const ngtools = require('@ngtools/webpack');
 
@@ -12,6 +13,9 @@ const commonConfig: any = {
     filename: '[name].bundle.js'
   },
   plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: false
+    }),
     new ngtools.AotPlugin({
       tsConfigPath: './tsconfig.json',
     })

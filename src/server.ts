@@ -34,6 +34,6 @@ server.get(['/', '/home', '/about'], (req, res) => {
     res.render('index', { req });
 });
 
-server.listen(3000, () => {
-    console.log('listening...')
+server.listen(environment.port, () => {
+    console.log('Listening on port:' + environment.port);
 });
