@@ -24,7 +24,11 @@ const commonConfig: any = {
       }, {
         "test": /\.html$/,
         "loader": "raw-loader"
-      }
+      },
+      {
+        "test": /\.css$/,
+        "loader": "raw-loader"
+      },
     ]
   }
 };
